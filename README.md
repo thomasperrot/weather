@@ -8,6 +8,12 @@
 
 A simple CLI to know whether or not it is going to rain today.
 
+## Installation
+
+```
+$ pip3 install -r requirements/local.txt
+```
+
 ## Usage
 
 ```
@@ -19,12 +25,6 @@ Example
 ```
 $ python main.py Paris
 It is going to rain today in Paris.
-```
-
-## Installation
-
-```
-$ pip3 install requirements/local.txt
 ```
 
 ## Tests
