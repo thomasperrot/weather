@@ -11,30 +11,24 @@ A simple CLI to know whether or not it is going to rain today.
 ## Installation
 
 ```
-$ pip3 install -r requirements/local.txt
+$ python setup.py develop
 ```
 
 ## Usage
 
 ```
-$ python main.py NAME
+$ python weather NAME
 ```
 
 Example
 
 ```
-$ python main.py Paris
+$ python weather Paris
 It is going to rain today in Paris.
-```
-
-## Tests
-
-```
-$ pip3 install requirements/test.txt
-$ py.test -v
 ```
 
 ## Improvments
 
-- Add options to select the desired weather besides of rain
+- Add options (verbosity, etc.)
+- Upload as pypi package
 - Find a better name for this app
