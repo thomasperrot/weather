@@ -1,3 +1,5 @@
+from unittest.mock import MagicMock
+
 import pytest
 from click.testing import CliRunner
 
@@ -55,3 +57,10 @@ def test_cli_there_is_rain(monkeypatch, forecasts_result, outpout):
     result = CliRunner().invoke(cli.cli, ["Paris"])
     assert result.exit_code == 0
     assert result.output == outpout
+
+
+def test_main(monkeypatch):
+    mock = MagicMock()
+    monkeypatch.setattr(cli, "cli", mock)
+    cli.main()
+    assert mock.called is True

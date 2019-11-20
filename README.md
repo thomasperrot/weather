@@ -12,19 +12,19 @@ A simple CLI to know whether or not it is going to rain today.
 ## Installation
 
 ```
-$ python setup.py develop
+$ python setup.py install
 ```
 
 ## Usage
 
 ```
-$ python weather NAME
+$ weather NAME
 ```
 
 Example
 
 ```
-$ python weather Paris
+$ weather Paris
 It is going to rain today in Paris.
 ```
 

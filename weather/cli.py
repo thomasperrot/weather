@@ -19,3 +19,7 @@ def cli(name) -> None:
             click.echo(f"It is going to rain today in {name}.")
         else:
             click.echo(f"It is not going to rain today in {name}.")
+
+
+def main():
+    return cli()
