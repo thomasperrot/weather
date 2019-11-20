@@ -1,10 +1,22 @@
 language: python
-python:
-  - "3.6"
-  - "3.7"
-before_install:
-  - pip install -r requirements/test.txt
+cache: pip
+env:
+  - PYTEST_ADDOPTS="--cov-append"
+matrix:
+  include:
+  - python: 3.6
+    env:
+      TOX_ENV: py36-unit-tests
+  - python: 3.7
+    env:
+      TOX_ENV: py37-unit-tests
+  - python: 3.7
+    env:
+      TOX_ENV: check-lint
+install:
+  - pip install tox codecov
+  - tox --notest -e $TOX_ENV
 script:
-  - py.test --cov-report term --cov=main tests/
+  - tox -e $TOX_ENV
 after_success:
   - codecov
