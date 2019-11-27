@@ -7,12 +7,13 @@ from .exceptions import NetworkError, UnknownCityError
 RAINY_STATES = ["hr", "lr", "s"]
 
 
-def get_city_id(city_name: str) -> int:
+def fetch_city_id(city_name: str) -> int:
     try:
         r = requests.get(
             url="https://www.metaweather.com/api/location/search/",
             params={"query": city_name},
         )
+        r.raise_for_status()
     except requests.RequestException:
         raise NetworkError
     if not r.json():
@@ -20,7 +21,7 @@ def get_city_id(city_name: str) -> int:
     return r.json()[0]["woeid"]
 
 
-def fetch_api(city_id: int) -> Dict:
+def fetch_forecasts(city_id: int) -> Dict:
     try:
         r = requests.get(url=f"https://www.metaweather.com/api/location/{city_id}")
     except requests.RequestException:

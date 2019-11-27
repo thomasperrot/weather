@@ -1,5 +1,5 @@
 prune tests
 exclude requirements.txt
 exclude tox.ini
+exclude pre-commit-hook
 include LICENSE.rst
-recursive-include weather *.py

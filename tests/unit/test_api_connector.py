@@ -12,6 +12,9 @@ def test_get_city_id_unknown_city(monkeypatch):
         def json(self):
             return []
 
+        def raise_for_status(self):
+            pass
+
     class MockRequest:
         @staticmethod
         def get(*args, **kwargs):
@@ -19,7 +22,7 @@ def test_get_city_id_unknown_city(monkeypatch):
 
     monkeypatch.setattr(api_connector, "requests", MockRequest)
     with pytest.raises(exceptions.UnknownCityError):
-        api_connector.get_city_id("unknown")
+        api_connector.fetch_city_id("unknown")
 
 
 def test_get_city_id_request_error(monkeypatch):
@@ -32,7 +35,7 @@ def test_get_city_id_request_error(monkeypatch):
 
     monkeypatch.setattr(api_connector, "requests", MockRequest)
     with pytest.raises(exceptions.NetworkError):
-        api_connector.get_city_id("unknown")
+        api_connector.fetch_city_id("unknown")
 
 
 def test_get_city_id_request(monkeypatch):
@@ -47,13 +50,16 @@ def test_get_city_id_request(monkeypatch):
                 }
             ]
 
+        def raise_for_status(self):
+            pass
+
     class MockRequest:
         @staticmethod
         def get(*args, **kwargs):
             return MockResponse()
 
     monkeypatch.setattr(api_connector, "requests", MockRequest)
-    response = api_connector.get_city_id("Paris")
+    response = api_connector.fetch_city_id("Paris")
     assert response == 615702
 
 
@@ -69,7 +75,7 @@ def test_fetch_api_unknown_city(monkeypatch):
 
     monkeypatch.setattr(api_connector, "requests", MockRequest)
     with pytest.raises(exceptions.UnknownCityError):
-        api_connector.fetch_api(1)
+        api_connector.fetch_forecasts(1)
 
 
 def test_fetch_api_request_error(monkeypatch):
@@ -82,7 +88,7 @@ def test_fetch_api_request_error(monkeypatch):
 
     monkeypatch.setattr(api_connector, "requests", MockRequest)
     with pytest.raises(exceptions.NetworkError):
-        api_connector.fetch_api(1)
+        api_connector.fetch_forecasts(1)
 
 
 def test_fetch_api_request(monkeypatch):
@@ -96,7 +102,7 @@ def test_fetch_api_request(monkeypatch):
             return MockResponse()
 
     monkeypatch.setattr(api_connector, "requests", MockRequest)
-    response = api_connector.fetch_api(1)
+    response = api_connector.fetch_forecasts(1)
     assert response == [{"city": "Paris"}]
 
 

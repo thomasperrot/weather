@@ -10,7 +10,7 @@ def test_cli_unknown_city(monkeypatch):
     def mock_get_city_id(_):
         raise exceptions.UnknownCityError
 
-    monkeypatch.setattr(cli, "get_city_id", mock_get_city_id)
+    monkeypatch.setattr(cli, "fetch_city_id", mock_get_city_id)
     result = CliRunner().invoke(cli.cli, ["unknown"])
     assert result.exit_code == 2
     assert (
@@ -23,7 +23,7 @@ def test_cli_network_error(monkeypatch):
     def mock_get_city_id(_):
         raise exceptions.NetworkError
 
-    monkeypatch.setattr(cli, "get_city_id", mock_get_city_id)
+    monkeypatch.setattr(cli, "fetch_city_id", mock_get_city_id)
     result = CliRunner().invoke(cli.cli, ["Paris"])
     assert result.exit_code == 2
     assert (
@@ -51,8 +51,8 @@ def test_cli_there_is_rain(monkeypatch, forecasts_result, outpout):
     def mock_parse_forecasts(_):
         return forecasts_result
 
-    monkeypatch.setattr(cli, "get_city_id", mock_get_city_id)
-    monkeypatch.setattr(cli, "fetch_api", mock_fetch_api)
+    monkeypatch.setattr(cli, "fetch_city_id", mock_get_city_id)
+    monkeypatch.setattr(cli, "fetch_forecasts", mock_fetch_api)
     monkeypatch.setattr(cli, "parse_forecasts", mock_parse_forecasts)
     result = CliRunner().invoke(cli.cli, ["Paris"])
     assert result.exit_code == 0

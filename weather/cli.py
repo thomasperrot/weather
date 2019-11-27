@@ -1,6 +1,6 @@
 import click
 
-from .api_connector import fetch_api, get_city_id, parse_forecasts
+from .api_connector import fetch_city_id, fetch_forecasts, parse_forecasts
 from .exceptions import NetworkError, UnknownCityError
 
 
@@ -8,8 +8,8 @@ from .exceptions import NetworkError, UnknownCityError
 @click.argument("name")
 def cli(name) -> None:
     try:
-        city_id = get_city_id(name)
-        forecasts = fetch_api(city_id)
+        city_id = fetch_city_id(name)
+        forecasts = fetch_forecasts(city_id)
     except UnknownCityError:
         raise click.UsageError(f"Unknown city {name}.")
     except NetworkError:
