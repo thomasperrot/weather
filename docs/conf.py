@@ -55,3 +55,15 @@ html_theme = "alabaster"
 html_static_path = ["_static"]
 
 master_doc = "index"
+
+html_theme_options = {
+    "description": "A CLI to know whether it is going to rain today in a given city.",
+    "sidebar_width": "235px",
+    "github_user": "thomasperrot",
+    "github_repo": "weather",
+    "badge_branch": "master",
+    "codecov_button": True,
+    "github_banner": True,
+    "github_button": True,
+    "travis_button": True,
+}

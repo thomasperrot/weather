@@ -30,7 +30,10 @@ Weather
    :target: https://github.com/psf/black
    :alt: Code style black
 
-A simple CLI to know whether or not it is going to rain today.
+A simple CLI to know whether it is going to rain today in a given city, using MetaWeather_ API_.
+
+.. _MetaWeather: https://www.metaweather.com/
+.. _API: https://www.metaweather.com/api/
 
 Here's an example
 
