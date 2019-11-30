@@ -1,5 +1,7 @@
 prune tests
+prune docs
 exclude requirements.txt
 exclude tox.ini
 exclude pre-commit-hook
+exclude CONTRIBUTING.rst
 include LICENSE.rst
