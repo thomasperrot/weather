@@ -10,6 +10,10 @@ Weather
    :target: https://www.python.org/downloads/release/python-370/
    :alt: Python3.7 compatible
 
+.. image:: https://readthedocs.org/projects/get-weather/badge/?version=latest
+    :target: http://get-weather.readthedocs.io/en/latest/?badge=latest
+    :alt: Documentation Status
+
 .. image:: https://travis-ci.com/thomasperrot/weather.svg?branch=master
    :target: https://travis-ci.org/thomasperrot/weather
    :alt: Continuous Integration Status
@@ -48,3 +52,17 @@ Improvments
 - Add options (verbosity, etc.)
 - Upload as pypi package
 - Find a better name for this app
+
+.. Below this line is content specific to the README that will not appear in the doc.
+.. end-of-index-doc
+
+Where to go from here
+---------------------
+
+The complete docs_ is probably the best place to learn about the project.
+
+If you encounter a bug, or want to get in touch, you're always welcome to open a
+ticket_.
+
+.. _docs: http://get-weather.readthedocs.io/en/latest
+.. _ticket: https://github.com/thomasperrot/weather/issues/new
