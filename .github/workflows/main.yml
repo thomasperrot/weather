@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+    branches:
+    tags:
+
+jobs:
+  lint:
+    name: Check lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+      - name: Install dependencies
+        run: |
+          set -xeu
+          python -VV
+          pip install tox
+      - name: Check lint
+        run: tox -e check-lint
