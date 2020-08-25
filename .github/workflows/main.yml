@@ -12,7 +12,7 @@ jobs:
   lint:
     name: Check lint
     runs-on: ubuntu-latest
-    if: github.event_name == 'release'
+    if: (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')) || github.event_name == 'release'
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python
