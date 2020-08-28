@@ -2,9 +2,8 @@ name: Tests
 
 on:
   push:
-    branches:
-      - master
-  pull_request:
+    tags:
+      - '*'
 
 jobs:
   check-lint:
