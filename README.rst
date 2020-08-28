@@ -2,23 +2,19 @@
 Weather
 *******
 
-.. image:: https://img.shields.io/badge/python-3.6-blue.svg
-   :target: https://www.python.org/downloads/release/python-360/
-   :alt: Python3.6 compatible
+.. image:: https://img.shields.io/badge/python-3.6%20%7C%203.7%20%7C%203.8-blue?logo=python&logoColor=white
+   :target: https://www.python.org/downloads/release
+   :alt: Python3.6+ compatible
 
-.. image:: https://img.shields.io/badge/python-3.7-blue.svg
-   :target: https://www.python.org/downloads/release/python-370/
-   :alt: Python3.7 compatible
-
-.. image:: https://readthedocs.org/projects/get-weather/badge/?version=latest
+.. image:: https://img.shields.io/readthedocs/get-weather?logo=read-the-docs
     :target: http://get-weather.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
 
-.. image:: https://travis-ci.com/thomasperrot/weather.svg?branch=master
-   :target: https://travis-ci.org/thomasperrot/weather
+.. image:: https://img.shields.io/github/workflow/status/thomasperrot/weather/CI?logo=github
+   :target: https://github.com/thomasperrot/weather/actions?workflow=tests
    :alt: Continuous Integration Status
 
-.. image:: https://codecov.io/gh/thomasperrot/weather/branch/master/graph/badge.svg
+.. image:: https://codecov.io/gh/thomasperrot/weather/branch/master/graph/badge.svg?logo=codecov
    :target: https://codecov.io/gh/thomasperrot/weather
    :alt: Coverage Status
 

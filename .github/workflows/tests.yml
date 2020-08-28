@@ -1,4 +1,4 @@
-name: tests
+name: Tests
 
 on:
   push:
@@ -74,3 +74,17 @@ jobs:
         uses: codecov/codecov-action@v1
         with:
           fail_ci_if_error: true
+
+  report:
+    - name: Report result
+      runs-on: ubuntu-latest
+      steps:
+      - uses: LouisBrunner/checks-action@v0.1.0
+        if: always()
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: test-report
+          conclusion: ${{ job }}
+          output:
+            summary: ${{ steps.test.outputs.summary }}
+            text_description: ${{ steps.test.outputs.description }}

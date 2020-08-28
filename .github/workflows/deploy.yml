@@ -18,7 +18,7 @@ jobs:
         id: wait-for-tests
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          checkName: tests
+          checkName: Test (python 3.8)
 
   deploy:
     name: Publish package to PyPI
