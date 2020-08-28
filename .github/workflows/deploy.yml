@@ -1,8 +1,9 @@
-name: deploy
+name: Deploy
 
 on:
   push:
     tags:
+      - '*'
   release:
     types:
       - published
