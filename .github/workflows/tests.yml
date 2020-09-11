@@ -2,6 +2,8 @@ name: Tests
 
 on:
   pull_request:
+    types:
+      - '*'
 
 jobs:
   check-lint:
