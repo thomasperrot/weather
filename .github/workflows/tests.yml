@@ -1,14 +1,7 @@
 name: Tests
 
 on:
-  push:
-    tags:
-      - '*'
-    branches:
-      - '*'
   pull_request:
-    types:
-      - '*'
 
 jobs:
   check-lint:
