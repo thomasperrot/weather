@@ -89,10 +89,10 @@ jobs:
 #      - check-lint
 #      - tests
     env:
-      GITHUB_EVENT_NAME_FUCK: ${{ GITHUB_EVENT_NAME }}
+      GITHUB_EVENT_NAME_FUCK: ${{ $GITHUB_EVENT_NAME }}
     steps:
       - uses: LouisBrunner/checks-action@v0.1.0
         with:
-          name: ${{ env.GITHUB_EVENT_NAME_FUCK }}
+          name: "${{GITHUB_EVENT_NAME_FUCK}}"
           token: ${{ secrets.GITHUB_TOKEN }}
           conclusion: ${{ job.status }}
