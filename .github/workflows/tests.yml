@@ -88,8 +88,6 @@ jobs:
 #    needs:
 #      - check-lint
 #      - tests
-    env:
-      GITHUB_EVENT_NAME_FUCK: ${{ $GITHUB_EVENT_NAME }}
     steps:
       - uses: LouisBrunner/checks-action@v0.1.0
         with:
