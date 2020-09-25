@@ -84,6 +84,6 @@ jobs:
     steps:
       - uses: LouisBrunner/checks-action@v0.1.0
         with:
-          name: ${{ github.env.GITHUB_EVENT_NAME }}
+          name: ${{ env.GITHUB_EVENT_NAME }}
           token: ${{ secrets.GITHUB_TOKEN }}
           conclusion: ${{ job.status }}
