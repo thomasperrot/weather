@@ -7,73 +7,73 @@ on:
   pull_request:
 
 jobs:
-  check-lint:
-    name: Check ${{ matrix.name }}
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        include:
-          - name: code
-            tox-env: check-lint
-          - name: documentation
-            tox-env: docs
-    steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.x
-      - name: Install dependencies
-        run: |
-          set -xeu
-          python -VV
-          pip install tox
-      - name: Check lint
-        run: tox -e ${{ matrix.tox-env }}
-
-  tests:
-    name: Test (python ${{ matrix.python-version }})
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        include:
-          - python-version: 3.6
-            tox-env: py36-tests
-          - python-version: 3.7
-            tox-env: py37-tests
-          - python-version: 3.8
-            tox-env: py38-tests
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python-version }}
-      - name: Cache pip
-        uses: actions/cache@v2
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-${{ matrix.python-version }}-pip-${{ hashFiles('setup.cfg') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
-      - name: Install dependencies
-        run: |
-          set -xeu
-          python -VV
-          pip install tox coverage
-      - name: Run tox targets for ${{ matrix.python-version }}
-        run: tox -e ${{ matrix.tox-env }}
-        env:
-          PGDATABASE: procrastinate
-          PGHOST: localhost
-          PGUSER: postgres
-          PGPASSWORD: password
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v1
-        with:
-          fail_ci_if_error: true
+#  check-lint:
+#    name: Check ${{ matrix.name }}
+#    runs-on: ubuntu-latest
+#    strategy:
+#      matrix:
+#        include:
+#          - name: code
+#            tox-env: check-lint
+#          - name: documentation
+#            tox-env: docs
+#    steps:
+#      - uses: actions/checkout@v2
+#      - name: Set up Python
+#        uses: actions/setup-python@v2
+#        with:
+#          python-version: 3.x
+#      - name: Install dependencies
+#        run: |
+#          set -xeu
+#          python -VV
+#          pip install tox
+#      - name: Check lint
+#        run: tox -e ${{ matrix.tox-env }}
+#
+#  tests:
+#    name: Test (python ${{ matrix.python-version }})
+#    runs-on: ubuntu-latest
+#
+#    strategy:
+#      matrix:
+#        include:
+#          - python-version: 3.6
+#            tox-env: py36-tests
+#          - python-version: 3.7
+#            tox-env: py37-tests
+#          - python-version: 3.8
+#            tox-env: py38-tests
+#
+#    steps:
+#      - uses: actions/checkout@v2
+#      - name: Set up Python
+#        uses: actions/setup-python@v2
+#        with:
+#          python-version: ${{ matrix.python-version }}
+#      - name: Cache pip
+#        uses: actions/cache@v2
+#        with:
+#          path: ~/.cache/pip
+#          key: ${{ runner.os }}-${{ matrix.python-version }}-pip-${{ hashFiles('setup.cfg') }}
+#          restore-keys: |
+#            ${{ runner.os }}-pip-
+#      - name: Install dependencies
+#        run: |
+#          set -xeu
+#          python -VV
+#          pip install tox coverage
+#      - name: Run tox targets for ${{ matrix.python-version }}
+#        run: tox -e ${{ matrix.tox-env }}
+#        env:
+#          PGDATABASE: procrastinate
+#          PGHOST: localhost
+#          PGUSER: postgres
+#          PGPASSWORD: password
+#      - name: Upload coverage to Codecov
+#        uses: codecov/codecov-action@v1
+#        with:
+#          fail_ci_if_error: true
 
   echo:
     name: Echo the env
@@ -85,12 +85,12 @@ jobs:
   report-status:
     name: Report workflow status
     runs-on: ubuntu-latest
-    needs:
-      - check-lint
-      - tests
+#    needs:
+#      - check-lint
+#      - tests
     steps:
       - uses: LouisBrunner/checks-action@v0.1.0
         with:
-          name: ${{ env.GITHUB_EVENT_NAME }}
+          name: ${{ job.env.GITHUB_EVENT_NAME }}
           token: ${{ secrets.GITHUB_TOKEN }}
           conclusion: ${{ job.status }}
