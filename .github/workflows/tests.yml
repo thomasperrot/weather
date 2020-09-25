@@ -75,6 +75,13 @@ jobs:
         with:
           fail_ci_if_error: true
 
+  echo:
+    name: Echo the env
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo
+        run: echo $GITHUB_EVENT_NAME
+
   report-status:
     name: Report workflow status
     runs-on: ubuntu-latest
