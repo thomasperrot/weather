@@ -76,14 +76,11 @@ jobs:
           fail_ci_if_error: true
 
   report-status:
-    name: Report workflow status
+    name: ${{ github.event_name }}-success
     runs-on: ubuntu-latest
     needs:
       - check-lint
       - tests
     steps:
-      - uses: LouisBrunner/checks-action@v0.1.0
-        with:
-          name: CI-${{ github.event_name }}
-          token: ${{ secrets.GITHUB_TOKEN }}
-          conclusion: ${{ job.status }}
+      - name: Report success
+        run: echo 'Success !'
