@@ -9,23 +9,19 @@ on:
       - published
 
 jobs:
-  check-tests:
-    name: Check tests
+  deploy:
+    name: Publish package to PyPI
     runs-on: ubuntu-latest
     steps:
       - name: Wait for tests to succeed
         uses: fountainhead/action-wait-for-check@v1.0.0
-        id: wait-for-tests
+        id: wait-for-ci
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           checkName: push-success
-
-  deploy:
-    name: Publish package to PyPI
-    runs-on: ubuntu-latest
-    needs: check-tests
-    if: ${{ needs.check-tests.outputs.conclusion == 'success' }}
-    steps:
+      - name: Exit if CI did not succeed
+        if: steps.wait-for-ci.outputs.conclusion != 'success'
+        run: exit 1
       - uses: actions/checkout@v2
       - name: Setup Python
         uses: actions/setup-python@v2
