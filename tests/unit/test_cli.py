@@ -5,6 +5,8 @@ from click.testing import CliRunner
 
 from weather import cli, exceptions
 
+def test_false():
+    assert 0
 
 def test_cli_unknown_city(monkeypatch):
     def mock_get_city_id(_):
