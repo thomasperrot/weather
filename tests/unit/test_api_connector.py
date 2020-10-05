@@ -7,6 +7,10 @@ import requests
 from weather import api_connector, exceptions
 
 
+def test_false():
+    assert 0
+
+
 def test_get_city_id_unknown_city(monkeypatch):
     class MockResponse:
         def json(self):
